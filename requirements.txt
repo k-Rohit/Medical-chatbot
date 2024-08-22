@@ -120,8 +120,6 @@ MarkupSafe==2.1.5
 marshmallow==3.21.3
 matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1713250518406/work
 mdurl==0.1.2
-# Editable install with no version control (Medical-Chatbot==0.0.0)
--e /Users/kumarrohit/Desktop/Langchain
 mem0ai==0.0.9
 mmh3==4.1.0
 monotonic==1.6
