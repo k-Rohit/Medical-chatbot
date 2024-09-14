@@ -1,5 +1,6 @@
 azure-cognitiveservices-speech
 folium
+langchain_mongodb
 google-ai-generativelanguage
 google-api-core
 google-api-python-client
