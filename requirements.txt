@@ -42,6 +42,7 @@ langchain-huggingface
 langchain-openai
 langchain-pinecone
 langchain-text-splitters
+langchain_groq
 langsmith
 Mako
 markdown-it-py
