@@ -22,6 +22,14 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from src.helper import load_pdf, text_split, download_hugginface_embeddings
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_mongodb.chat_message_histories import MongoDBChatMessageHistory
+
+chat_message_history = MongoDBChatMessageHistory(
+    session_id="test_session",
+    connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
+    database_name="medical_chatbot",
+    collection_name="chat_histories",
+)
 
 warnings.filterwarnings("ignore")
 load_dotenv()
@@ -29,9 +37,10 @@ load_dotenv()
 PINECONE_API_KEY = os.environ.get('PINECONE_API')
 if "GOOGLE_API_KEY" not in os.environ:
     os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
-if "GROQ_API_KEY" not in os.environ:
-    os.environ["GROQ_API_KEY"] = getpass.getpass("Enter your Groq API key: ")
+# if "GROQ_API_KEY" not in os.environ:
+#     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter your Groq API key: ")
 
+GROQ_API_KEY = st.secrets["api_keys"]["GROQ_API_KEY"]
 # Load the embeddings
 embeddings = download_hugginface_embeddings()
 
@@ -42,7 +51,7 @@ index = pc.Index(index_name)
 vector_store = PineconeVectorStore(index=index, embedding=embeddings)
 
 def get_context_retriever_chain(vector_store):
-    llm = ChatGroq(model="mixtral-8x7b-32768")
+    llm = ChatGroq(model="mixtral-8x7b-32768",api_key=GROQ_API_KEY)
     # llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
     retriever = vector_store.as_retriever(
     search_type="similarity_score_threshold",
@@ -57,7 +66,7 @@ def get_context_retriever_chain(vector_store):
     return retriever_chain
 
 def get_conversational_rag_chain(retriever_chain):
-    llm = ChatGroq(model="mixtral-8x7b-32768")
+    llm = ChatGroq(model="mixtral-8x7b-32768",api_key=GROQ_API_KEY)
     # llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
     prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a highly knowledgeable and trusted medical assistant, dedicated to providing accurate, concise, and clear information based on the user's symptoms. "
@@ -136,12 +145,14 @@ if page == "Home":
         if isinstance(message, AIMessage):
             with st.chat_message("AI"):
                 # Display the message
+                chat_message_history.add_ai_message(message.content)
                 st.write(message.content)
                 # Button to synthesize speech for this message
                 if st.button(f"Listen to Response {index}", key=f"listen_button_{index}"):
                     synthesize_speech(message.content)
         elif isinstance(message, HumanMessage):
             with st.chat_message("Human"):
+                chat_message_history.add_user_message(message.content)
                 st.write(message.content)
                     
 elif page == "Doctor Locator":
@@ -149,3 +160,5 @@ elif page == "Doctor Locator":
     
 elif page == "Disease Information":
     disease_info_page()
+    
+    
