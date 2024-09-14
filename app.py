@@ -7,7 +7,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from doctor_locator import doctor_locator
-from disease_finder import disease_info_page
+# from disease_finder import disease_info_page
 from src.prompt import prompt_template
 from pinecone import Pinecone, ServerlessSpec
 from text_to_speech import synthesize_speech
