@@ -24,7 +24,7 @@ embeddings = download_hugginface_embeddings()
 
 # Initialise the Pinecone vector store and index
 pc = Pinecone(api_key=PINECONE_API_KEY)
-index_name = "medical-chatbot2"
+index_name = "medical-chatbot3"
 
 existing_indexes = [index_info["name"] for index_info in pc.list_indexes()]
 
