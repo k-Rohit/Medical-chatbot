@@ -96,7 +96,7 @@ st.set_page_config(page_title="Medical Chatbot ",page_icon="⚕️")
 
 # with st.sidebar:
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Chatbot", "Doctor Locator")  
+page = st.sidebar.radio("Go to", ["Chatbot", "Doctor Locator"])  
 
 if page == "Home":
     # Your existing code for the main page
@@ -158,7 +158,7 @@ if page == "Home":
 elif page == "Doctor Locator":
     doctor_locator()
     
-elif page == "Disease Information":
-    disease_info_page()
+# elif page == "Disease Information":
+#     disease_info_page()
     
     
