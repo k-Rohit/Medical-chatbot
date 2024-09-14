@@ -1,7 +1,4 @@
 
-crewai==0.41.1
-crewai-tools==0.4.26
-ctransformers==0.2.27
 google-ai-generativelanguage==0.6.6
 google-api-core==2.19.1
 google-api-python-client==2.140.0
