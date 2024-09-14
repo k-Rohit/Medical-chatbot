@@ -35,7 +35,7 @@ warnings.filterwarnings("ignore")
 load_dotenv()
 
 # PINECONE_API_KEY = os.environ.get('PINECONE_API')
-if "GOOGLE_API_KEY" not in os.environ:
+# if "GOOGLE_API_KEY" not in os.environ:
     # os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
 # if "GROQ_API_KEY" not in os.environ:
 #     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter your Groq API key: ")
