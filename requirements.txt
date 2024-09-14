@@ -1,4 +1,3 @@
-azure
 azure-cognitiveservices-speech
 folium
 google-ai-generativelanguage
