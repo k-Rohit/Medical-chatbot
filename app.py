@@ -24,12 +24,12 @@ from src.helper import load_pdf, text_split, download_hugginface_embeddings
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain_mongodb.chat_message_histories import MongoDBChatMessageHistory
 
-chat_message_history = MongoDBChatMessageHistory(
-    session_id="test_session",
-    connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
-    database_name="medical_chatbot",
-    collection_name="chat_histories",
-)
+# chat_message_history = MongoDBChatMessageHistory(
+#     session_id="test_session",
+#     connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
+#     database_name="medical_chatbot",
+#     collection_name="chat_histories",
+# )
 
 warnings.filterwarnings("ignore")
 load_dotenv()
@@ -145,14 +145,14 @@ if page == "Home":
         if isinstance(message, AIMessage):
             with st.chat_message("AI"):
                 # Display the message
-                chat_message_history.add_ai_message(message.content)
+                # chat_message_history.add_ai_message(message.content)
                 st.write(message.content)
                 # Button to synthesize speech for this message
                 if st.button(f"Listen to Response {index}", key=f"listen_button_{index}"):
                     synthesize_speech(message.content)
         elif isinstance(message, HumanMessage):
             with st.chat_message("Human"):
-                chat_message_history.add_user_message(message.content)
+                # chat_message_history.add_user_message(message.content)
                 st.write(message.content)
                     
 elif page == "Doctor Locator":
