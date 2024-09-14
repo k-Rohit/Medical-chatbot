@@ -98,7 +98,7 @@ st.set_page_config(page_title="Medical Chatbot ",page_icon="⚕️")
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Chatbot", "Doctor Locator"])  
 
-if page == "Home":
+if page == "Chatbot":
     # Your existing code for the main page
     st.title("Medical Chatbot ⚕️") 
     # making chat persist
