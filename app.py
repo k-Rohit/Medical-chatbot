@@ -34,12 +34,12 @@ from langchain_mongodb.chat_message_histories import MongoDBChatMessageHistory
 warnings.filterwarnings("ignore")
 load_dotenv()
 
-PINECONE_API_KEY = os.environ.get('PINECONE_API')
+# PINECONE_API_KEY = os.environ.get('PINECONE_API')
 if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
+    # os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
 # if "GROQ_API_KEY" not in os.environ:
 #     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter your Groq API key: ")
-
+PINECONE_API_KEY = st.secrets["api_keys"]["PINECONE_API_KEY"]
 GROQ_API_KEY = st.secrets["api_keys"]["GROQ_API_KEY"]
 # Load the embeddings
 embeddings = download_hugginface_embeddings()
