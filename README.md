@@ -1,7 +1,5 @@
 # GEN AI: Developing a General Chatbot for Medical Knowledge
 
-![Project Logo](path_to_logo_image) <!-- Optional: Add your project logo -->
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
