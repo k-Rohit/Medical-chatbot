@@ -72,7 +72,7 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.10 or higher
 - Git
 - MongoDB account
 - Pinecone account
