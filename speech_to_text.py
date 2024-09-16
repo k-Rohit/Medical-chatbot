@@ -20,7 +20,8 @@ def recognize_from_microphone():
 
     file_name = "outputaudio.wav"
     file_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
-    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=file_config)
+    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=file_config)
+    # speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=file_config)
 
     # Perform speech recognition
     speech_recognition_result = speech_recognizer.recognize_once_async().get()
