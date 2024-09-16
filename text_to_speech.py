@@ -10,7 +10,10 @@ def synthesize_speech(text):
     speech_config.speech_synthesis_voice_name = "hi-IN-SwaraNeural"
     
     # Use the default speaker as audio output
-    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+    # speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config)
+    file_name = "outputaudio.wav"
+    file_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
+    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=file_config)
 
     # Perform speech synthesis
     result = speech_synthesizer.speak_text_async(text).get()
