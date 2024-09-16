@@ -15,13 +15,8 @@ def recognize_from_microphone():
     speech_config.speech_recognition_language = "en-US"
 
     # Initialize audio configuration to use the default microphone
-    # audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
-    # speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
-
-    file_name = "outputaudio.wav"
-    file_config = speechsdk.audio.AudioOutputConfig(filename=file_name)
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=file_config)
-    # speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=file_config)
+    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     # Perform speech recognition
     speech_recognition_result = speech_recognizer.recognize_once_async().get()
