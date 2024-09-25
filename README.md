@@ -70,7 +70,7 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.10 or higher
 - Git
 - MongoDB account
 - Pinecone account
@@ -84,6 +84,17 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
    ```bash
    git clone https://github.com/yourusername/medical-chatbot.git
    cd medical-chatbot
+2. **Create and Activate a Virtual Environment:
 
+```bash
+conda create -n myenv
+conda activate myenv
+```
 
-<img width="1417" alt="Screenshot 2024-09-14 at 9 45 48 PM" src="https://github.com/user-attachments/assets/fc32d095-722f-4bc1-9a52-895db4afb856">
+3. pip install -r requirements.txt
+4. Create a .env file
+PINECONE_API_KEY=your_pinecone_key
+MONGODB_URI=your_mongodb_uri
+HERE_API_KEY=your_here_api_key
+AZURE_SPEECH_KEY=your_azure_speech_key
+
