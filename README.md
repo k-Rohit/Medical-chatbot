@@ -84,7 +84,7 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
    ```bash
    git clone https://github.com/yourusername/medical-chatbot.git
    cd medical-chatbot
-2. **Create and Activate a Virtual Environment:
+2. Create and Activate a Virtual Environment:
 
 ```bash
 conda create -n myenv
@@ -103,6 +103,11 @@ PINECONE_API_KEY=your_pinecone_key
 MONGODB_URI=your_mongodb_uri
 HERE_API_KEY=your_here_api_key
 AZURE_SPEECH_KEY=your_azure_speech_key
+```
+
+5. Run the application
+```bash
+streamlit run app.py
 ```
 
 
