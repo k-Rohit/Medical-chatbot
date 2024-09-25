@@ -57,8 +57,6 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
 
 ## Architecture
 
-![Architecture Diagram](path_to_architecture_diagram) <!-- Optional: Add architecture diagram -->
-
 1. **User Interface:** Built with Streamlit, providing an interactive chat interface.
 2. **Natural Language Processing:** LangChain and GroQ model handle user queries.
 3. **Knowledge Base:** Vector database in Pinecone stores and retrieves information from a comprehensive medical book.
