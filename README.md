@@ -91,10 +91,18 @@ conda create -n myenv
 conda activate myenv
 ```
 
-3. pip install -r requirements.txt
+3. ** Install requirements.txt
+```bash
+ pip install -r requirements.txt
+```
+
 4. Create a .env file
+
+```
 PINECONE_API_KEY=your_pinecone_key
 MONGODB_URI=your_mongodb_uri
 HERE_API_KEY=your_here_api_key
 AZURE_SPEECH_KEY=your_azure_speech_key
+```
+
 
