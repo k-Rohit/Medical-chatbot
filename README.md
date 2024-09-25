@@ -89,7 +89,7 @@ conda create -n myenv
 conda activate myenv
 ```
 
-3. ** Install requirements.txt
+3. Install requirements.txt
 ```bash
  pip install -r requirements.txt
 ```
