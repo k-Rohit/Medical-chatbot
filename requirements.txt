@@ -143,6 +143,7 @@ SQLAlchemy
 starlette
 streamlit
 streamlit-chat
+streamlit_lottie
 sympy
 tabulate
 tenacity
