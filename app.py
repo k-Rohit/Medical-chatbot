@@ -1,13 +1,16 @@
 import os
 import time
+import requests
 import pinecone
 import warnings
+import json
 import streamlit as st
 from datetime import datetime
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
+from streamlit_lottie import st_lottie
 from doctor_locator import doctor_locator
-# from disease_finder import disease_info_page
+from disease_finder import disease_info_page
 from src.prompt import prompt_template
 from pinecone import Pinecone, ServerlessSpec
 from text_to_speech import synthesize_speech
@@ -23,23 +26,24 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from src.helper import load_pdf, text_split, download_hugginface_embeddings
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain_mongodb.chat_message_histories import MongoDBChatMessageHistory
+from get_chat_history import see_chat_history
 
-# chat_message_history = MongoDBChatMessageHistory(
-#     session_id="test_session",
-#     connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
-#     database_name="medical_chatbot",
-#     collection_name="chat_histories",
-# )
+chat_message_history = MongoDBChatMessageHistory(
+    session_id="test_session",
+    connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
+    database_name="medical_chatbot",
+    collection_name="chat_histories",
+)
 
 warnings.filterwarnings("ignore")
 load_dotenv()
 
-# PINECONE_API_KEY = os.environ.get('PINECONE_API')
-# if "GOOGLE_API_KEY" not in os.environ:
-    # os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
+PINECONE_API_KEY = os.environ.get('PINECONE_API')
+if "GOOGLE_API_KEY" not in os.environ:
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("Provide your Google API Key")
 # if "GROQ_API_KEY" not in os.environ:
 #     os.environ["GROQ_API_KEY"] = getpass.getpass("Enter your Groq API key: ")
-PINECONE_API_KEY = st.secrets["api_keys"]["PINECONE_API_KEY"]
+
 GROQ_API_KEY = st.secrets["api_keys"]["GROQ_API_KEY"]
 # Load the embeddings
 embeddings = download_hugginface_embeddings()
@@ -89,18 +93,27 @@ def get_response(user_input):
     })
     return response['answer']
 
+def load_lottie_file(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+
+
+
 # UI Code - 
-
+animation_url = "Animation - 1726393307875.json"
+animation_url2 = "Animation - 1726393754301.json"
+lottie_animation = load_lottie_file(animation_url)
+lottie_animation2 = load_lottie_file(animation_url2)
 st.set_page_config(page_title="Medical Chatbot ",page_icon="⚕️")
-# st.title("Medical Chatbot ⚕️")
-
-# with st.sidebar:
+with st.sidebar:
+    st_lottie(lottie_animation, speed=1, width=300, height=100, loop=True)
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Chatbot", "Doctor Locator"])  
+page = st.sidebar.radio("Go to", ["Home", "Doctor Locator", "Disease Information","Chat History"]) 
 
-if page == "Chatbot":
-    # Your existing code for the main page
-    st.title("Medical Chatbot ⚕️") 
+
+if page == "Home":
+    st.title("MedSure ⚕️") 
     # making chat persist
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = [
@@ -114,6 +127,7 @@ if page == "Chatbot":
     user_query = None
     listening_placeholder = st.empty()
 
+    
     if st.sidebar.button("Voice Input", use_container_width=True, key="voice_input"):
         listening_placeholder.text("Listening...")
         user_query = recognize_from_microphone()
@@ -144,21 +158,26 @@ if page == "Chatbot":
     for index, message in enumerate(st.session_state.chat_history):
         if isinstance(message, AIMessage):
             with st.chat_message("AI"):
-                # Display the message
-                # chat_message_history.add_ai_message(message.content)
+                chat_message_history.add_ai_message(message.content)
                 st.write(message.content)
-                # Button to synthesize speech for this message
                 if st.button(f"Listen to Response {index}", key=f"listen_button_{index}"):
                     synthesize_speech(message.content)
         elif isinstance(message, HumanMessage):
             with st.chat_message("Human"):
-                # chat_message_history.add_user_message(message.content)
+                chat_message_history.add_user_message(message.content)
                 st.write(message.content)
+    with st.sidebar:
+        st.header("Team - AI CREW")
+        st.subheader("Kumar Rohit")
+        st.subheader("Priyanshu Gupta")
                     
 elif page == "Doctor Locator":
     doctor_locator()
     
-# elif page == "Disease Information":
-#     disease_info_page()
+elif page == "Disease Information":
+    disease_info_page()
+    
+elif page == "Chat History":
+    see_chat_history()
     
     
