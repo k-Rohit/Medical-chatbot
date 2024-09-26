@@ -1,3 +1,5 @@
+crewai
+crewai_tools
 azure-cognitiveservices-speech
 folium
 langchain_mongodb
@@ -64,7 +66,6 @@ nodeenv
 numexpr
 numpy
 oauthlib
-onnxruntime
 openai
 openapi-schema-pydantic
 opentelemetry-api
