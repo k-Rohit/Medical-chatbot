@@ -8,7 +8,7 @@
 # def see_chat_history():
 #     chat_message_history = MongoDBChatMessageHistory(
 #         session_id="test_session",
-#         connection_string="mongodb+srv://kumarrohitindia25:x383x9f3ohB1d0k1@medical-chatbot.ztpxn.mongodb.net/",
+#         connection_string="",
 #         database_name="medical_chatbot",
 #         collection_name="chat_histories",
 #     )
