@@ -3,8 +3,8 @@ import azure.cognitiveservices.speech as speechsdk
 
 # Set environment variables for Azure Speech service
 
-os.environ["SPEECH_KEY"] = "2931e0f28be245d8b62ee293fb488fa9"
-os.environ["SPEECH_REGION"] = "eastus"
+os.environ["SPEECH_KEY"] = ""
+os.environ["SPEECH_REGION"] = ""
 
 def recognize_from_microphone():
     # Initialize speech configuration
