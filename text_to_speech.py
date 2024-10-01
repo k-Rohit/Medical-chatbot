@@ -2,8 +2,8 @@ import azure.cognitiveservices.speech as speechsdk
 
 def synthesize_speech(text):
     # Creates an instance of a speech config with specified subscription key and service region.
-    speech_key = "2931e0f28be245d8b62ee293fb488fa9"
-    service_region = "eastus"
+    speech_key = ""
+    service_region = ""
     
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
     # Set the voice for speech synthesis
