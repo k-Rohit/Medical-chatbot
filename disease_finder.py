@@ -3,11 +3,6 @@ import streamlit as st
 from crewai_tools import SerperDevTool
 from crewai import Agent, Task, Crew, Process
 
-os.environ["OPENAI_API_KEY"] = "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"
-os.environ["OPENAI_MODEL_NAME"] = 'llama3-8b-8192'
-os.environ["OPENAI_API_BASE"] = "https://api.groq.com/openai/v1"
-os.environ["SERPER_API_KEY"] = "bf31d18f256806e68755dbd5a79bfcf019340048"
-
 def disease_info_page():
     st.title("Disease Information")
     
