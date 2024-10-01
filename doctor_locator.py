@@ -5,7 +5,7 @@ import streamlit as st
 import os
 
 # Replace with your actual API key
-api_key = "yLEIAB8irgwPO2QdTSKvT20f9jVbzxN4-3xxveQkinA"
+api_key = ""
 
 @st.cache_data(show_spinner=False)
 def geocode_address(address, api_key):
