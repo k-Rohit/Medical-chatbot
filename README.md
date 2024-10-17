@@ -24,7 +24,7 @@ Patients and healthcare providers need an intelligent assistant to provide accur
 
 ### Objective
 
-Develop a chatbot where patients can input symptoms and receive preliminary assessments and recommendations. Additionally, the system should assist patients in scheduling appointments with healthcare providers. Providing personalized health advice and reminders based on individual health data and preferences can improve patient outcomes.
+Develop a general chatbot where patients can input symptoms and receive preliminary assessments and recommendations. Additionally, the system should assist patients in scheduling appointments with healthcare providers. Providing personalized health advice and reminders based on individual health data and preferences can improve patient outcomes.
 
 ### Expected Outcomes
 
