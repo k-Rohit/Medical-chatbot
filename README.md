@@ -49,7 +49,7 @@ Develop a general chatbot where patients can input symptoms and receive prelimin
 
 ## Technologies Used
 
-- **Framework:** Streamlit
+- **Framework:** Streamlit, Crew AI
 - **Language Models:** LangChain, GroQ Model
 - **Database:** Pinecone (Vector Database), MongoDB
 - **APIs:** HERE API, Azure Speech
